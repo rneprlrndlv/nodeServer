@@ -35,7 +35,10 @@ app.get('/joinTest', function(req,res){
 }); 
 app.get('/loginTest', function(req,res){
   res.sendfile(__dirname + '/userLoginTest.html');
-}); 
+});
+app.get('/writer', function(req, res){
+  res.sendfile(__dirname + '/writer.html');
+});
 
 app.get('/sportswriter/lists', list.key); // 게시글을 받아오기위한 데이터
 app.get('/sportswriter/lists/:writer', list.writer); // 작성자 이름 받아오기(리스트에 뿌리기 위해)

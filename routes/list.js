@@ -26,8 +26,9 @@ exports.key = function(req, res) {
 
 exports.writer = function(req, res) {
 	var writerString = req.param('writer');
+
 	connection.query('insert into sw_board_list set ?', [writerString], function(err, data) {
-		connection.query('select * from sw_board_list', function(error, results, fields) {
+		connection.query('select * from sw_board_list where post_writer=?',[writerString] ,function(error, results, fields) {
 			if(error) {console.log('error: ' + error);}
 			var data = JSON.stringify(results);
 			res.send(data);
