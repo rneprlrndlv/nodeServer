@@ -31,13 +31,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/joinTest', function(req,res){
-  res.sendfile(__dirname + '/userJoinTest.html');
+  res.sendfile(__dirname + '/sportswriter/userJoinTest.html');
 }); 
 app.get('/loginTest', function(req,res){
-  res.sendfile(__dirname + '/userLoginTest.html');
+  res.sendfile(__dirname + '/sportswriter/userLoginTest.html');
 });
 app.get('/writer', function(req, res){
-  res.sendfile(__dirname + '/writer.html');
+  res.sendfile(__dirname + '/sportswriter/writer.html');
 });
 
 app.get('/sportswriter/lists', list.key); // 게시글을 받아오기위한 데이터

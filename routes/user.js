@@ -17,25 +17,11 @@ connection.connect();
 connection.query('use ts01');
 
 exports.join = function(req, res){
-	/*
-		{
-		  "_name" : "userID",
-		  "_email" : "userEM@naver.com",
-		  "_password" : "userPW",
-		  "_phone" : "userPH"
-		}
-	*/
-	
+
 	var name = req.body._name; // form 태그 name 속성 값이 req.body.**로 들어온다.
 	var email = req.body._email;
 	var password = req.body._password;
 	var phone = req.body._phone;
-
-	// var jsonObject = JSON.parse(req.body.jsonObject);
-	// var name = jsonObject._name; // form 태그 name 속성 값이 req.body.**로 들어온다.
-	// var email = jsonObject._email;
-	// var password = jsonObject._password;
-	// var phone = jsonObject._phone;
 
 	connection.query('insert into sw_user_info set user_name=?, user_email=?, user_password=?, user_phone=? ', [name, email, password, phone], function(err, data) {
 		connection.query('select * from sw_user_info', function(error, results, fields) {
