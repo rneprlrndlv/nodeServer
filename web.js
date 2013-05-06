@@ -15,7 +15,7 @@ var express = require('express')
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 5002);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -31,16 +31,19 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/joinTest', function(req,res){
-	res.sendfile(__dirname + '/userJoinTest.html');
+  res.sendfile(__dirname + '/userJoinTest.html');
 }); 
 app.get('/loginTest', function(req,res){
   res.sendfile(__dirname + '/userLoginTest.html');
-}); 
+});
+app.get('/writer', function(req, res){
+  res.sendfile(__dirname + '/writer.html');
+});
 
 app.get('/sportswriter/lists', list.key); // 게시글을 받아오기위한 데이터
 app.get('/sportswriter/lists/:writer', list.writer); // 작성자 이름 받아오기(리스트에 뿌리기 위해)
 app.get('/sportswriter/replys/add/:message/:postid/:username', reply.add); // 댓글 내용을 API에서 받아온 ID를 통해 해당하는 글에 분류해서 넣고 로그인 정보를 받아와서 키로 사용해 사용자의 이름을 테이블에서 인덱스에 맞게 추출한다.
-app.get('/sportswriter/replys/delete/:postid', reply.delete); // 댓글 지우기
+app.get('/sportswriter/replys/delete/:postid/:username', reply.delete); // 댓글 지우기
 app.get('/sportswriter/magazine/download/:category/:username', magazine.down); // 매거진 다운로드 체크
 
 app.post('/sportswriter/users/join', user.join); // 회원가입
