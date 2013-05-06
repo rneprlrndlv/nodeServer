@@ -30,14 +30,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/joinTest', function(req,res){
-  res.sendfile(__dirname + '/sportswriter/userJoinTest.html');
+app.get('/sportswriter/joinTest', function(req,res){
+  res.sendfile(__dirname + '/userJoinTest.html');
 }); 
-app.get('/loginTest', function(req,res){
-  res.sendfile(__dirname + '/sportswriter/userLoginTest.html');
+app.get('/sportswriter/loginTest', function(req,res){
+  res.sendfile(__dirname + '/userLoginTest.html');
 });
-app.get('/writer', function(req, res){
-  res.sendfile(__dirname + '/sportswriter/writer.html');
+app.get('/sportswriter/writer', function(req, res){
+  res.sendfile(__dirname + '/writer.html');
 });
 
 app.get('/sportswriter/lists', list.key); // 게시글을 받아오기위한 데이터
